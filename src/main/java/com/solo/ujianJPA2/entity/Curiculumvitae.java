@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 @Entity
-@Table(name="user_model")
-public class UserModel {
+@Table(name="curiculumvitae")
+public class Curiculumvitae {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;

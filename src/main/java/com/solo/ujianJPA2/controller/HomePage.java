@@ -1,4 +1,4 @@
-package com.solo.ujianJPA2;
+package com.solo.ujianJPA2.controller;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.solo.ujianJPA2.entity.UserModel;
+import com.solo.ujianJPA2.entity.Curiculumvitae;
 import com.solo.ujianJPA2.repository.UserRepository;
 import com.solo.ujianJPA2.util.FileUploadUtil;
 
@@ -22,7 +22,7 @@ public class HomePage {
 	
 	@GetMapping("/")
 	public String viewIndex(Model model) {
-		model.addAttribute("usermodel", new UserModel()); 
+		model.addAttribute("usermodel", new Curiculumvitae()); 
 		return "index.html";
 	}
 	
@@ -31,7 +31,7 @@ public class HomePage {
 	public String addUser(@RequestParam("fullname")String name,@RequestParam("email")String email,@RequestParam("platform")String platform,
 			 @RequestParam("cv") MultipartFile file, Model model) {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		UserModel userModel = new UserModel(0, name, email, platform, fileName);
+		Curiculumvitae userModel = new Curiculumvitae(0, name, email, platform, fileName);
 		userModel.setCv(fileName);
 		this.userRepository.save(userModel);
 		
